@@ -182,6 +182,23 @@ class Piwik
     }
 
     /**
+     * Returns the cached the Piwik URL without a leading scheme, eg. //demo.piwik.org/ or //example.org/piwik/
+     * If not found, then tries to cache it and returns the value.
+     *
+     * @return string
+     */
+    static public function getPiwikUrlWithoutScheme()
+    {
+        $url = self::GetPiwikUrl();
+        if (substr($url, 0, 6) === 'https:') {
+            $url = substr($url, 6);
+        } else if (substr($url, 0, 5) === 'http:') {
+            $url = substr($url, 5);
+        }
+        return $url;
+    }
+
+    /**
      * Returns true if this appears to be a secure HTTPS connection
      *
      * @return bool

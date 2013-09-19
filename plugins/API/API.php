@@ -454,7 +454,7 @@ class Piwik_API_API
             $logo = 'themes/logo.png';
         }
         if (!$pathOnly) {
-            return Piwik::getPiwikUrl() . $logo;
+            return Piwik::getPiwikUrlWithoutScheme() . $logo;
         }
         return Piwik_Common::getPathToPiwikRoot() . '/' . $logo;
     }
@@ -474,7 +474,7 @@ class Piwik_API_API
             $logo = 'themes/logo-header.png';
         }
         if (!$pathOnly) {
-            return Piwik::getPiwikUrl() . $logo;
+            return Piwik::getPiwikUrlWithoutScheme() . $logo;
         }
         return Piwik_Common::getPathToPiwikRoot() . '/' . $logo;
     }
@@ -495,7 +495,7 @@ class Piwik_API_API
             $logo = 'themes/logo.svg';
         }
         if (!$pathOnly) {
-            return Piwik::getPiwikUrl() . $logo;
+            return Piwik::getPiwikUrlWithoutScheme() . $logo;
         }
         return Piwik_Common::getPathToPiwikRoot() . '/' . $logo;
     }

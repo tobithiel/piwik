@@ -53,15 +53,27 @@ class Piwik_Url
 
     /**
      * If current URL is "http://example.org/dir1/dir2/index.php?param1=value1&param2=value2"
+     * will return "//example.org/dir1/dir2/"
+     *
+     * @return string with trailing slash
+     */
+    static public function getCurrentUrlWithoutFileNameSchemeAgnostic()
+    {
+        return '//'
+            . self::getCurrentHost()
+            . self::getCurrentScriptPath();
+    }
+
+    /**
+     * If current URL is "http://example.org/dir1/dir2/index.php?param1=value1&param2=value2"
      * will return "http://example.org/dir1/dir2/"
      *
      * @return string with trailing slash
      */
     static public function getCurrentUrlWithoutFileName()
     {
-        return self::getCurrentScheme() . '://'
-            . self::getCurrentHost()
-            . self::getCurrentScriptPath();
+        return self::getCurrentScheme() . ':'
+            . self::getCurrentUrlWithoutFileNameSchemeAgnostic();
     }
 
     /**
